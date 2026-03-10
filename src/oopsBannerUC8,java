@@ -1,0 +1,73 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class oopsBannerUC8 {
+
+    // Method to build and return the character pattern map
+    public static Map<Character, String[]> buildCharacterMap() {
+
+        Map<Character, String[]> map = new HashMap<>();
+
+        map.put('O', new String[]{
+                " *** ",
+                "*     *",
+                "*     *",
+                "*     *",
+                "*     *",
+                "*     *",
+                " *** "
+        });
+
+        map.put('P', new String[]{
+                " *** ",
+                "*     *",
+                "*     *",
+                " *** ",
+                "*      ",
+                "*      ",
+                "*      "
+        });
+
+        map.put('S', new String[]{
+                " *** ",
+                "*      ",
+                "*      ",
+                " *** ",
+                "      *",
+                "*     *",
+                " *** "
+        });
+
+        return map;
+    }
+
+    // Method to render the banner message
+    public static void renderBanner(String message, Map<Character, String[]> patternMap) {
+
+        for (int row = 0; row < 7; row++) {
+
+            StringBuilder line = new StringBuilder();
+
+            for (int col = 0; col < message.length(); col++) {
+
+                char ch = message.charAt(col);
+                String[] pattern = patternMap.get(ch);
+
+                line.append(pattern[row]).append("   ");
+            }
+
+            System.out.println(line);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println("OOPS Banner App - UC8\n");
+
+        Map<Character, String[]> patternMap = buildCharacterMap();
+
+        String message = "OOPS";
+
+        renderBanner(message, patternMap);
+    }
+}
